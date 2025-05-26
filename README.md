@@ -2,6 +2,14 @@
 
 This guide shows how to compile and package the `example2` and `example5` OSGi bundles using both **Windows** and **Linux** environments. It includes details for classpath setup, file structure, and JAR creation with a manifest.
 
+## 📥 Download Apache Felix
+
+You can download Apache Felix from the official website:
+
+https://felix.apache.org/documentation/downloads.html
+
+Make sure to download the felix-framework-7.0.5/ distribution and extract it to a convenient location.
+
 ---
 
 ## 📁 Project Structure
