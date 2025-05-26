@@ -30,13 +30,13 @@ cd /osgi-lab/Source_code/tutorial/example2
 #### Option 1: Direct classpath
 
 ```bash
-javac -cp /osgi-lab/Framework/org.apache.felix.main.distribution-4.0.3/felix-framework-4.0.3/bin/felix.jar *.java service/*.java
+javac -cp /osgi-lab/Framework/org.apache.felix.main.distribution-7.0.5/felix-framework-7.0.5/bin/felix.jar *.java service/*.java
 ```
 
 #### Option 2: Using environment variable
 
 ```bash
-FELIX_JAR=/osgi-lab/Framework/org.apache.felix.main.distribution-4.0.3/felix-framework-4.0.3/bin/felix.jar
+FELIX_JAR=/osgi-lab/Framework/org.apache.felix.main.distribution-7.0.5/felix-framework-7.0.5/bin/felix.jar
 javac -cp $FELIX_JAR *.java service/*.java
 ```
 
@@ -45,7 +45,7 @@ javac -cp $FELIX_JAR *.java service/*.java
 From the `tutorial` directory, use:
 
 ```cmd
-javac -cp C:\Udara\felix-framework-4.0.3\bin\felix.jar example2\*.java example2\service\*.java
+javac -cp C:\Udara\felix-framework-7.0.5\bin\felix.jar example2\*.java example2\service\*.java
 ```
 
 ### 🔍 Explanation
@@ -95,8 +95,18 @@ Import-Package: org.osgi.framework
 ## ▶️ Run with Felix
 
 ```bash
-cd /path/to/felix-framework-4.0.3
+cd /path/to/felix-framework-7.0.5
 java -jar bin/felix.jar
+
+-----
+
+if not
+
+use
+java \
+--add-opens java.base/java.net=ALL-UNNAMED \
+--add-opens java.base/java.security=ALL-UNNAMED \
+-jar bin/felix.jar
 
 # In Felix console:
 install file:/full/path/to/example2.jar
