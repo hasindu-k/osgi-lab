@@ -24,19 +24,19 @@ tutorial/
 Navigate to the `example2` folder:
 
 ```bash
-cd /media/hasindu/Disk_D/Coding_Ubuntu/osgi-lab/Source_code/tutorial/example2
+cd /osgi-lab/Source_code/tutorial/example2
 ```
 
 #### Option 1: Direct classpath
 
 ```bash
-javac -cp /media/hasindu/Disk_D/Coding_Ubuntu/osgi-lab/Framework/org.apache.felix.main.distribution-4.0.3/felix-framework-4.0.3/bin/felix.jar *.java service/*.java
+javac -cp /osgi-lab/Framework/org.apache.felix.main.distribution-4.0.3/felix-framework-4.0.3/bin/felix.jar *.java service/*.java
 ```
 
 #### Option 2: Using environment variable
 
 ```bash
-FELIX_JAR=/media/hasindu/Disk_D/Coding_Ubuntu/osgi-lab/Framework/org.apache.felix.main.distribution-4.0.3/felix-framework-4.0.3/bin/felix.jar
+FELIX_JAR=/osgi-lab/Framework/org.apache.felix.main.distribution-4.0.3/felix-framework-4.0.3/bin/felix.jar
 javac -cp $FELIX_JAR *.java service/*.java
 ```
 
@@ -64,7 +64,7 @@ javac -cp C:\Udara\felix-framework-4.0.3\bin\felix.jar example2\*.java example2\
 ### Linux
 
 ```bash
-cd /media/hasindu/Disk_D/Coding_Ubuntu/osgi-lab/Source_code/tutorial/example2
+cd /osgi-lab/Source_code/tutorial/example2
 jar cfm example2.jar ../manifest_example2.mf -C . .
 ```
 
