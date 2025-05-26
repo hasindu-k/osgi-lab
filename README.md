@@ -30,14 +30,17 @@ cd /osgi-lab/Source_code/tutorial/example2
 #### Option 1: Direct classpath
 
 ```bash
-javac -cp /osgi-lab/Framework/org.apache.felix.main.distribution-7.0.5/felix-framework-7.0.5/bin/felix.jar *.java service/*.java
+mkdir -p bin
+javac -d bin -cp /osgi-lab/Framework/org.apache.felix.main.distribution-7.0.5/felix-framework-7.0.5/bin/felix.jar *.java service/*.java
 ```
 
 #### Option 2: Using environment variable
 
 ```bash
-FELIX_JAR=/osgi-lab/Framework/org.apache.felix.main.distribution-7.0.5/felix-framework-7.0.5/bin/felix.jar
-javac -cp $FELIX_JAR *.java service/*.java
+FELIX_JAR=/osgi-lab/Framework/org.apache.felix.main.distribution-4.0.3/felix-framework-4.0.3/bin/felix.jar
+mkdir -p bin
+javac -d bin -cp $FELIX_JAR *.java service/*.java
+
 ```
 
 ### ✅ Windows
@@ -65,16 +68,31 @@ javac -cp C:\Udara\felix-framework-7.0.5\bin\felix.jar example2\*.java example2\
 
 ```bash
 cd /osgi-lab/Source_code/tutorial/example2
-jar cfm example2.jar ../manifest_example2.mf -C . .
+jar cfm example2.jar manifest.mf -C bin .
+
 ```
 
 ### Windows
 
 ```cmd
-jar cfm example2.jar ..\manifest_example2.mf -C example2 .
+jar cfm example2.jar manifest.mf -C bin .
+
 ```
 
-> Ensure your `manifest_example2.mf` ends with a newline and includes required OSGi headers.
+> Ensure your `manifest.mf` ends with a newline and includes required OSGi headers. `refer manifest_example2.mf `
+
+### 🔍 Explanation
+
+- `jar`: Java Archive tool — used to create, view, or update .jar files.
+- `c`: Create a new archive.
+
+f Specify the archive filename (example2.jar)
+m Include a manifest file (contains metadata like bundle name, activator, etc.)
+example2.jar Name of the output JAR file
+../manifest_example2.mf / ..\manifest_example2.mf Path to the custom manifest file
+-C . . (Linux) / -C example2 . (Windows) Change into the specified directory and add all its contents (. means "current folder") to the JAR
+
+> **Purpose**: Creating the JAR
 
 ---
 
@@ -112,6 +130,39 @@ java \
 install file:/full/path/to/example2.jar
 start <bundle-id>
 ```
+
+```bash
+hasindu@hasindu-inspiron:/osgi-lab/Framework/org.apache.felix.main.distribution-7.0.5/felix-framework-7.0.5$ java -jar bin/felix.jar
+____________________________
+Welcome to Apache Felix Gogo
+
+g!                                                                                                                                                                                    12:44:38
+g! install /osgi-lab/Source_code/tutorial/example2/example2.jar                                                                                    12:44:38
+Bundle ID: 7
+g! lb                                                                                                                                                                                 12:45:16
+START LEVEL 1
+   ID|State      |Level|Name
+    0|Active     |    0|System Bundle (7.0.5)|7.0.5
+    1|Active     |    1|jansi (1.18.0)|1.18.0
+    2|Active     |    1|JLine Bundle (3.13.2)|3.13.2
+    3|Active     |    1|Apache Felix Bundle Repository (2.0.10)|2.0.10
+    4|Active     |    1|Apache Felix Gogo Command (1.1.2)|1.1.2
+    5|Active     |    1|Apache Felix Gogo JLine Shell (1.1.8)|1.1.8
+    6|Active     |    1|Apache Felix Gogo Runtime (1.1.4)|1.1.4
+    7|Installed  |    1|English dictionary (1.0.0)|1.0.0
+
+g! start 7                                                                                                                                                                            12:45:20
+Dictionary service registered and started successfully
+
+g! stop 7                                                         12:45:28
+Dictionary service stopped.
+
+g!                                                                                                                                                                                    12:45:34
+
+
+```
+
+javac -d bin -cp "$FELIX_JAR:/media/hasindu/Disk_D/Coding_Ubuntu/osgi-lab/Source_code/tutorial/example2/example2.jar" Activator.java
 
 ---
 
